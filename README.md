@@ -1,2 +1,0 @@
-# sukuna-coin
-sukuna

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$SUKUNA Coin - King of All Crypto</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome untuk Ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        heading: ['Oswald', 'sans-serif'],
+                        body: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        sukuna: {
+                            red: '#dc2626',
+                            darkred: '#7f1d1d',
+                            black: '#0a0a0a',
+                            gray: '#171717'
+                        }
+                    },
+                    animation: {
+                        'marquee': 'marquee 25s linear infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-100%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #dc2626;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #b91c1c;
+        }
+        
+        /* Animasi Muncul (Reveal) */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Efek Glow Spesial */
+        .glow-red {
+            box-shadow: 0 0 40px rgba(220, 38, 38, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-sukuna-black text-gray-200 font-body overflow-x-hidden selection:bg-sukuna-red selection:text-white">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 bg-sukuna-black/80 backdrop-blur-md border-b border-sukuna-red/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer">
+                    <span class="text-sukuna-red text-3xl font-heading font-bold tracking-wider">$SUKUNA</span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#about" class="hover:text-sukuna-red transition-colors px-3 py-2 rounded-md font-semibold">About</a>
+                        <a href="#tokenomics" class="hover:text-sukuna-red transition-colors px-3 py-2 rounded-md font-semibold">Tokenomics</a>
+                        <a href="#roadmap" class="hover:text-sukuna-red transition-colors px-3 py-2 rounded-md font-semibold">Roadmap</a>
+                        <a href="#community" class="hover:text-sukuna-red transition-colors px-3 py-2 rounded-md font-semibold">Community</a>
+                        <a href="#" class="bg-gradient-to-r from-sukuna-red to-sukuna-darkred text-white px-6 py-2 rounded-full font-bold hover:scale-105 transition-transform shadow-[0_0_15px_rgba(220,38,38,0.5)]">
+                            Buy Now
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-sukuna-gray border-b border-sukuna-red/20">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-sukuna-red/10 hover:text-sukuna-red">About</a>
+                <a href="#tokenomics" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-sukuna-red/10 hover:text-sukuna-red">Tokenomics</a>
+                <a href="#roadmap" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-sukuna-red/10 hover:text-sukuna-red">Roadmap</a>
+                <a href="#" class="block px-3 py-2 mt-4 text-center rounded-md text-base font-bold bg-sukuna-red text-white">Buy Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden min-h-screen flex items-center">
+        <!-- Background Ornaments -->
+        <div class="absolute top-1/4 left-10 w-72 h-72 bg-sukuna-red/20 rounded-full mix-blend-screen filter blur-[100px] animate-pulse-slow"></div>
+        <div class="absolute bottom-1/4 right-10 w-96 h-96 bg-sukuna-darkred/30 rounded-full mix-blend-screen filter blur-[120px] animate-pulse-slow" style="animation-delay: 1s;"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-12">
+                
+                <!-- Text Content -->
+                <div class="lg:w-1/2 text-center lg:text-left reveal">
+                    <div class="inline-block px-4 py-1 rounded-full border border-sukuna-red/50 bg-sukuna-red/10 text-sukuna-red text-sm font-semibold mb-6">
+                        <i class="fas fa-fire mr-2"></i> Execution Initiated
+                    </div>
+                    <h1 class="text-5xl lg:text-7xl font-heading font-bold leading-tight mb-6">
+                        DOMAIN EXPANSION: <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-800">
+                            $SUKUNA COIN
+                        </span>
+                    </h1>
+                    <p class="text-lg text-gray-400 mb-8 max-w-2xl mx-auto lg:mx-0">
+                        Become the King of Curses in the Crypto realm. $SUKUNA is not just a trend, it's here to dominate the entire market. Zero tax, liquidity burned, ultimate control lies with the community.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <button class="bg-sukuna-red hover:bg-red-700 text-white font-bold py-4 px-8 rounded-full transition-all hover:scale-105 glow-red flex items-center justify-center gap-2">
+                            <i class="fas fa-wallet"></i> Buy $SUKUNA
+                        </button>
+                        <button class="border border-gray-600 hover:border-sukuna-red hover:text-sukuna-red text-white font-bold py-4 px-8 rounded-full transition-all flex items-center justify-center gap-2">
+                            <i class="fas fa-chart-line"></i> View Chart
+                        </button>
+                    </div>
+                    
+                    <!-- Contract Address -->
+                    <div class="mt-10 p-4 bg-sukuna-gray rounded-xl border border-gray-800 flex items-center justify-between group">
+                        <div class="overflow-hidden text-left">
+                            <p class="text-xs text-gray-500 mb-1">Contract Address (Solana)</p>
+                            <p class="text-sm sm:text-base font-mono truncate" id="contract-address">Sukuna111111111111111111111111111111111111</p>
+                        </div>
+                        <button onclick="copyCA()" class="ml-4 text-gray-400 hover:text-sukuna-red transition-colors" title="Copy CA">
+                            <i class="far fa-copy text-xl"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Hero Image -->
+                <div class="lg:w-1/2 reveal delay-200 relative">
+                    <div class="relative w-full max-w-md mx-auto aspect-[4/5] rounded-2xl overflow-hidden glow-red border-2 border-sukuna-red/30">
+                        <div class="absolute inset-0 bg-gradient-to-t from-sukuna-black via-transparent to-transparent z-10"></div>
+                        <!-- Placeholder Image (Replace src with your actual image link) -->
+                        <img src="https://cdn.polyspeak.ai/speakmaster/82d720569b5b1d4561eb8181900dfc5d.webp" 
+                             alt="Sukuna Hero Image" 
+                             class="w-full h-full object-cover object-center transform hover:scale-110 transition-transform duration-700">
+                        
+                        <div class="absolute bottom-6 left-6 right-6 z-20">
+                            <h3 class="font-heading font-bold text-2xl text-white">RYOMEN SUKUNA</h3>
+                            <p class="text-sukuna-red font-medium">The King of Curses</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Marquee Banner -->
+    <div class="bg-sukuna-red text-white py-3 overflow-hidden border-y border-red-900 relative z-20">
+        <div class="flex whitespace-nowrap animate-marquee font-heading font-bold text-xl tracking-widest">
+            <span class="mx-4">🔥 MALEVOLENT SHRINE ACTIVATED</span>
+            <span class="mx-4">•</span>
+            <span class="mx-4">KING OF CURSES</span>
+            <span class="mx-4">•</span>
+            <span class="mx-4">0% TAX</span>
+            <span class="mx-4">•</span>
+            <span class="mx-4">LIQUIDITY BURNED</span>
+            <span class="mx-4">•</span>
+            <span class="mx-4">🔥 MALEVOLENT SHRINE ACTIVATED</span>
+            <span class="mx-4">•</span>
+            <span class="mx-4">KING OF CURSES</span>
+            <span class="mx-4">•</span>
+            <span class="mx-4">0% TAX</span>
+            <span class="mx-4">•</span>
+            <span class="mx-4">LIQUIDITY BURNED</span>
+            <span class="mx-4">•</span>
+             <span class="mx-4">🔥 MALEVOLENT SHRINE ACTIVATED</span>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-sukuna-gray relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl font-heading font-bold text-white mb-4">WHAT IS <span class="text-sukuna-red">$SUKUNA</span>?</h2>
+                <div class="w-24 h-1 bg-sukuna-red mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-sukuna-black p-8 rounded-2xl border border-gray-800 hover:border-sukuna-red/50 transition-colors reveal group">
+                    <div class="w-16 h-16 bg-red-900/20 rounded-xl flex items-center justify-center mb-6 group-hover:bg-sukuna-red/20 transition-colors">
+                        <i class="fas fa-fire-flame-curved text-3xl text-sukuna-red"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white">Total Annihilation (Burn)</h3>
+                    <p class="text-gray-400">100% of LP tokens have been burned to the afterlife (burn address). No manipulation, purely driven and controlled by the community.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-sukuna-black p-8 rounded-2xl border border-gray-800 hover:border-sukuna-red/50 transition-colors reveal delay-100 group">
+                    <div class="w-16 h-16 bg-red-900/20 rounded-xl flex items-center justify-center mb-6 group-hover:bg-sukuna-red/20 transition-colors">
+                        <i class="fas fa-hand-holding-dollar text-3xl text-sukuna-red"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white">0% Transaction Tax</h3>
+                    <p class="text-gray-400">The King never pays taxes. Buy and sell $SUKUNA with 0% slippage fee. All the profits belong entirely to you.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-sukuna-black p-8 rounded-2xl border border-gray-800 hover:border-sukuna-red/50 transition-colors reveal delay-200 group">
+                    <div class="w-16 h-16 bg-red-900/20 rounded-xl flex items-center justify-center mb-6 group-hover:bg-sukuna-red/20 transition-colors">
+                        <i class="fas fa-shield-halved text-3xl text-sukuna-red"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white">Contract Renounced</h3>
+                    <p class="text-gray-400">Contract ownership has been fully renounced. $SUKUNA is an immortal entity, entirely safe from any developer intervention.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tokenomics Section -->
+    <section id="tokenomics" class="py-24 bg-sukuna-black relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-5"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl font-heading font-bold text-white mb-4">TOKENOMICS</h2>
+                <div class="w-24 h-1 bg-sukuna-red mx-auto rounded-full"></div>
+                <p class="mt-6 text-gray-400 max-w-2xl mx-auto">A cursed distribution designed for extreme longevity and total market domination.</p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <!-- Chart Info -->
+                <div class="lg:w-1/2 w-full grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div class="bg-sukuna-gray p-6 rounded-xl border-l-4 border-sukuna-red reveal">
+                        <p class="text-gray-400 text-sm mb-1">Total Supply</p>
+                        <h4 class="text-2xl font-bold text-white">1,000,000,000</h4>
+                    </div>
+                    <div class="bg-sukuna-gray p-6 rounded-xl border-l-4 border-red-500 reveal delay-100">
+                        <p class="text-gray-400 text-sm mb-1">Tax</p>
+                        <h4 class="text-2xl font-bold text-white">0% Buy / 0% Sell</h4>
+                    </div>
+                    <div class="bg-sukuna-gray p-6 rounded-xl border-l-4 border-red-700 reveal delay-200">
+                        <p class="text-gray-400 text-sm mb-1">Liquidity (LP)</p>
+                        <h4 class="text-2xl font-bold text-white">100% Burned 🔥</h4>
+                    </div>
+                    <div class="bg-sukuna-gray p-6 rounded-xl border-l-4 border-red-900 reveal delay-300">
+                        <p class="text-gray-400 text-sm mb-1">Network</p>
+                        <h4 class="text-2xl font-bold text-white">Solana (SOL)</h4>
+                    </div>
+                </div>
+
+                <!-- Visual Element -->
+                <div class="lg:w-1/2 w-full flex justify-center reveal delay-200">
+                    <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full border-4 border-sukuna-red flex items-center justify-center glow-red">
+                        <div class="absolute inset-0 rounded-full border border-red-500 animate-ping opacity-20"></div>
+                        <div class="text-center">
+                            <i class="fas fa-fingerprint text-6xl text-sukuna-red mb-4"></i>
+                            <h3 class="text-3xl font-heading font-bold">$SUKUNA</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap Section -->
+    <section id="roadmap" class="py-24 bg-sukuna-gray">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl font-heading font-bold text-white mb-4">CURSED ROADMAP</h2>
+                <div class="w-24 h-1 bg-sukuna-red mx-auto rounded-full"></div>
+            </div>
+
+            <div class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-sukuna-red before:to-transparent">
+
+                <!-- Phase 1 -->
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active reveal">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-sukuna-black bg-sukuna-red text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 glow-red">
+                        1
+                    </div>
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-sukuna-black p-6 rounded-xl border border-gray-800 hover:border-sukuna-red transition-colors">
+                        <h3 class="font-bold text-xl text-white mb-2">Phase 1: Birth of the Finger</h3>
+                        <ul class="text-gray-400 space-y-2 text-sm">
+                            <li><i class="fas fa-check text-sukuna-red mr-2"></i> Concept & Contract Creation</li>
+                            <li><i class="fas fa-check text-sukuna-red mr-2"></i> Website & Social Media Launch</li>
+                            <li><i class="fas fa-check text-sukuna-red mr-2"></i> Fair Launch on Raydium</li>
+                            <li><i class="fas fa-circle-notch fa-spin text-gray-500 mr-2"></i> Target: 1,000 Holders</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Phase 2 -->
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group reveal delay-100">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-sukuna-black bg-gray-800 text-gray-400 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                        2
+                    </div>
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-sukuna-black p-6 rounded-xl border border-gray-800">
+                        <h3 class="font-bold text-xl text-white mb-2">Phase 2: Shibuya Incident</h3>
+                        <ul class="text-gray-400 space-y-2 text-sm">
+                            <li><i class="fas fa-circle text-[8px] text-gray-600 mr-2"></i> Aggressive Marketing Campaign</li>
+                            <li><i class="fas fa-circle text-[8px] text-gray-600 mr-2"></i> CoinGecko & CoinMarketCap Listing</li>
+                            <li><i class="fas fa-circle text-[8px] text-gray-600 mr-2"></i> Crypto Influencer Partnerships</li>
+                            <li><i class="fas fa-circle text-[8px] text-gray-600 mr-2"></i> Target: 5,000 Holders</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Phase 3 -->
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group reveal delay-200">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-sukuna-black bg-gray-800 text-gray-400 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                        3
+                    </div>
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-sukuna-black p-6 rounded-xl border border-gray-800">
+                        <h3 class="font-bold text-xl text-white mb-2">Phase 3: World Domination</h3>
+                        <ul class="text-gray-400 space-y-2 text-sm">
+                            <li><i class="fas fa-circle text-[8px] text-gray-600 mr-2"></i> Tier-2 & Tier-1 CEX Listings</li>
+                            <li><i class="fas fa-circle text-[8px] text-gray-600 mr-2"></i> Sukuna NFT Collection</li>
+                            <li><i class="fas fa-circle text-[8px] text-gray-600 mr-2"></i> Global Community Domination</li>
+                            <li><i class="fas fa-circle text-[8px] text-gray-600 mr-2"></i> Target: 50,000+ Holders</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Community / Footer -->
+    <footer id="community" class="bg-sukuna-black border-t border-sukuna-red/20 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-12 reveal">
+                <div class="text-center md:text-left">
+                    <h2 class="text-3xl font-heading font-bold text-white mb-2">JOIN OUR DOMAIN</h2>
+                    <p class="text-gray-400">Become a part of the King of Curses' army. Don't be left behind.</p>
+                </div>
+                
+                <div class="flex gap-4">
+                    <a href="#" class="w-14 h-14 bg-sukuna-gray rounded-full flex items-center justify-center text-2xl text-white hover:bg-[#1DA1F2] hover:scale-110 transition-all duration-300">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="w-14 h-14 bg-sukuna-gray rounded-full flex items-center justify-center text-2xl text-white hover:bg-[#0088cc] hover:scale-110 transition-all duration-300">
+                        <i class="fab fa-telegram-plane"></i>
+                    </a>
+                    <a href="#" class="w-14 h-14 bg-sukuna-gray rounded-full flex items-center justify-center text-2xl text-white hover:bg-sukuna-red hover:scale-110 transition-all duration-300">
+                        <i class="fas fa-chart-bar"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
+                <p>&copy; 2026 $SUKUNA Coin. All rights reserved.</p>
+                <p class="text-center md:text-right max-w-xl">
+                    Disclaimer: Cryptocurrency is highly volatile. $SUKUNA is a meme coin for entertainment and community purposes, with no expectation of financial return. Do your own research (DYOR).
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Copy Contract Address Function
+        function copyCA() {
+            const caText = document.getElementById('contract-address').innerText;
+            navigator.clipboard.writeText(caText).then(() => {
+                const btnIcon = event.currentTarget.querySelector('i');
+                btnIcon.classList.remove('fa-copy', 'far');
+                btnIcon.classList.add('fa-check', 'fas', 'text-green-500');
+                
+                setTimeout(() => {
+                    btnIcon.classList.remove('fa-check', 'fas', 'text-green-500');
+                    btnIcon.classList.add('fa-copy', 'far');
+                }, 2000);
+            });
+        }
+
+        // Scroll Reveal Animation
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        // Trigger once on load
+        reveal();
+    </script>
+</body>
+</html>
